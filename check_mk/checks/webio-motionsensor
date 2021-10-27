@@ -27,7 +27,7 @@ def check_webiomotion(item, _no_params, info):
 
                 #Check if we have Motion.. Motion is if average is more than 1 away from current motion counter or if it is negative
 
-                if motion_current > 1 or motion_current < 0:
+                if motion_current > 1 or motion_current < -1:
                         yield (2, "Motion found " , [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
                 else:
                         yield (0, "No Motion ", [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
