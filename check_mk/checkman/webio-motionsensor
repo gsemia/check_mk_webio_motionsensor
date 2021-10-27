@@ -1,0 +1,15 @@
+title: Webio Motion Sensor
+agents: snmp
+catalog: hw/webio
+license: Propertary
+distribution: Propertary
+description:
+ This check alerts if the counter for the motion sensor counter is increased by more than 1 in the past 5 minutes
+
+perfdata:
+ motion is a graph which represents the current counter of the webio motion sensor
+ motion_rate_avg is a graph which shows the current 5 minute average
+ motion_current is a graph which shows the current motion (difference between motion - motion_rate_avg)
+
+inventory:
+ This check creates "Motion" check if the Webio-Digital-MIB SNMP OID is found
