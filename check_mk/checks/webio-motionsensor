@@ -20,17 +20,17 @@ def check_webiomotion(item, _no_params, info):
         if 'Motion'  in item:
                 timestamp = time.time()
                 try:
-                        motion_rate_avg = get_average("motion" , timestamp, motion, 300 / 60.0, True)
-                        motion_current = motion - motion_rate_avg
+                        motion_rate_avg = get_average("motion" , timestamp, motion, 120 / 60.0, True)
+                        motion_current = round(motion - motion_rate_avg,1)
                 except MKCounterWrapped:
                         yield (3, "exception" )
 
                 #Check if we have Motion.. Motion is if average is more than 1 away from current motion counter or if it is negative
 
-                if motion_current > 1 or motion_current < -1:
-                        yield (2, "Motion found " , [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
+                if abs(motion_current) > 1.0:
+                        yield (2, "Motion found 11" , [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
                 else:
-                        yield (0, "No Motion ", [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
+                        yield (0, "No Motion 22", [("motion", motion), ("motion_rate_avg", motion_rate_avg), ("motion_current", motion_current),])
 
 
 
